@@ -77,8 +77,6 @@ def add_enemy(enemy):
 def add_enemy_shot(shot):
     enemy_shots.append(shot)
 
-delta = 0
-
 spawn = Spawn(add2input, add2process, add2pipeline, free, add_enemy, add_enemy_shot)
 add2input(spawn)
 
@@ -110,6 +108,8 @@ running = True
 is_drawing_fps = True
 
 while running:
+    delta = clock.tick(60) / 1000
+    
     # input
     for event in pygame.event.get():
         if paused:
@@ -147,8 +147,6 @@ while running:
     if is_drawing_fps:
         draw_fps()
     pygame.display.flip()
-    
-    delta = clock.tick(60) / 1000
 
 # clear game
 inputs.clear()
