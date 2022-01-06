@@ -23,4 +23,4 @@ class Shot:
         self.pos = pos
     
     def draw(self, screen):
-        screen.blit(self.sprite, self.pos)
+        self.mask = screen.blit(self.sprite, self.pos)

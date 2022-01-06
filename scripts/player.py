@@ -23,6 +23,7 @@ class Player(Ship):
         shot.set_pos(self.pos + Vector2(14, 0))
         self.process(shot)
         self.pipeline(shot)
+        self.add_shot(shot)
     
     def _process(self, delta):
         super()._process(delta)

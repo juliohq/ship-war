@@ -133,6 +133,13 @@ while running:
     # collisions
     if not player.destroyed and player.mask.collidelist([enemy.mask for enemy in enemies]) != -1:
         player.destroy()
+    for enemy in enemies:
+        for shot in player_shots:
+            if enemy.mask.colliderect(shot.mask):
+                player_shots.remove(shot)
+                shot.free(shot)
+                enemy.destroy()
+                break
     
     # process
     if not paused:
