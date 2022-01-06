@@ -11,6 +11,8 @@ class Enemy(Ship):
         self._dir = Vector2(0, 1)
         self.speed = 16
         self.delay = 2000
+        self.destroy_sound = pygame.mixer.Sound("assets/enemy_destroy.wav")
+        self.destroy_sound.set_volume(0.25)
     
     def shoot(self):
         if super().shoot():

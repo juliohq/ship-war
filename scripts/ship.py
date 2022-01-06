@@ -22,7 +22,14 @@ class Ship:
         self.shoot_sound.set_volume(0.12)
         self.update_mask()
         self.add_shot = add_shot
+        self.destroyed = False
         # print(f"created ship with id {self.id}")
+    
+    def destroy(self):
+        if not self.destroyed:
+            self.destroyed = True
+            self.destroy_sound.play()
+            self.free(self)
     
     def get_id(self):
         return random.randrange(2 ** 16)
@@ -46,4 +53,4 @@ class Ship:
         self.pos += offset * delta
     
     def draw(self, screen):
-        screen.blit(self.sprite, self.pos)
+        self.mask = screen.blit(self.sprite, self.pos)

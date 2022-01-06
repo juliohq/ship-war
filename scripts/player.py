@@ -10,6 +10,8 @@ class Player(Ship):
         super().__init__(inputs, process, pipeline, free, add_shot)
         self.sprite = pygame.image.load("assets/player.png")
         self.limits = [0, 368]
+        self.destroy_sound = pygame.mixer.Sound("assets/player_destroy.wav")
+        self.destroy_sound.set_volume(0.25)
     
     def shoot(self):
         if not super().shoot():

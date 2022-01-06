@@ -62,8 +62,6 @@ add2process(player)
 add2pipeline(player)
 player.set_pos(Vector2(200, 352))
 
-# player rect
-player_rect = player.mask
 # enemies
 enemies = []
 # player shots
@@ -131,6 +129,10 @@ while running:
                 pygame.mixer.music.set_volume(0.25)
                 free(pause)
                 pause.reset()
+    
+    # collisions
+    if player.mask.collidelist([enemy.mask for enemy in enemies]) != -1:
+        player.destroy()
     
     # process
     if not paused:
