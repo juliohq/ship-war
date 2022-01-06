@@ -131,7 +131,7 @@ while running:
                 pause.reset()
     
     # collisions
-    if player.mask.collidelist([enemy.mask for enemy in enemies]) != -1:
+    if not player.destroyed and player.mask.collidelist([enemy.mask for enemy in enemies]) != -1:
         player.destroy()
     
     # process
